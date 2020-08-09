@@ -76,7 +76,7 @@ int producer(void *item){
         }
         
         // usleep_range(1000000, 1000001);
-        for (j = 0; j < 1000000000ULL; j++);
+        for (j = 0; j < 100000000ULL; j++);
     }
     // spin_unlock_irqrestore(&interruptLock, flags);
     printk(KERN_INFO "DEBUG: Exit from Producer\n");
