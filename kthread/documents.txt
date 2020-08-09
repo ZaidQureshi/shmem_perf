@@ -1,0 +1,32 @@
+# Reduce jitter in kthread
+1. https://www.kernel.org/doc/Documentation/kernel-per-CPU-kthreads.txt
+2. https://www.kernel.org/doc/html/latest/admin-guide/kernel-per-CPU-kthreads.html 
+
+
+#Pinning in kthread
+1. https://elinux.org/images/0/03/Core-Partitioning-Technique-on-Multicore-Linux-system.pdf
+2. https://lwn.net/Articles/65178/
+3. https://stackoverflow.com/questions/27738284/not-able-to-bind-kernel-threads-to-cpu 
+4. https://elixir.bootlin.com/linux/latest/source/kernel/kthread.c#L443 
+
+
+#kthread creation
+1. http://gauss.ececs.uc.edu/Courses/c4029/labs/lab2.html 
+2. https://tuxthink.blogspot.com/2011/02/kernel-thread-creation-1.html?m=1 
+3. https://riptutorial.com/linux-kernel/example/31869/creation-of-kernel-threads 
+4. https://www.linuxjournal.com/article/8144
+
+
+# Isocpu activated
+1. https://unix.stackexchange.com/questions/336017/how-to-detect-if-isolcpus-is-activated
+
+
+# User-kernel thread - fast interaction
+1. https://github.com/facebook/folly/tree/master/folly/fibers 
+2. https://github.com/samanbarghi/uThreads 
+3. https://web.stanford.edu/~ouster/cgi-bin/papers/QinPhD.pdf 
+
+
+#RCU what is RCU:
+1. https://www.kernel.org/doc/Documentation/RCU/whatisRCU.txt
+2. https://www.kernel.org/doc/Documentation/RCU/
