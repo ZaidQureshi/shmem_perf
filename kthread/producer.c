@@ -18,7 +18,7 @@ struct queue squeue;
 // struct queue *sqptr = &squeue; 
 EXPORT_SYMBOL(squeue);
 
-static struct task_struct *kthread;
+static struct task_struct *kproducer;
 
 int producer(void *item){
     int cpuid = 0; 
@@ -97,23 +97,23 @@ int kthread_init(void){
 
     printk(KERN_INFO "DEBUG: Producer Master thread cpu %d\n", cpuid);
 
-    kthread = kthread_create(producer, (void *)&squeue, "one"); 
-    if (IS_ERR(kthread))
+    kproducer = kthread_create(producer, (void *)&squeue, "one"); 
+    if (IS_ERR(kproducer))
     {
         printk(KERN_INFO "ERROR: Cannot create Producer thread\n");
-        err = PTR_ERR(kthread);
-        kthread = NULL;
+        err = PTR_ERR(kproducer);
+        kproducer = NULL;
         return err;
     }
-    kthread_bind(kthread, 37);
-    wake_up_process(kthread);
+    kthread_bind(kproducer, 37);
+    wake_up_process(kproducer);
  
 
     return 0;
 }
 
 void kthread_exit(void){
-    kthread_stop(kthread);
+    kthread_stop(kproducer);
     printk(KERN_EMERG "DEBUG: Producer Module unload successful\n");
 }
 

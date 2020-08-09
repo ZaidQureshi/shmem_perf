@@ -13,7 +13,7 @@
 
 extern struct queue squeue;
 
-static struct task_struct *kthread2;
+static struct task_struct *kconsumer;
 
 int consumer(void *item){
     int cpuid = 0; 
@@ -75,7 +75,7 @@ int consumer(void *item){
         // udelay(5);
         printk(KERN_INFO "DEBUG: CurrHead = %llu Enqueue: %llu  Dequeue: %llu   Dur: %llu\n", curr_head, p_stamp[i-1], c_stamp[i-1], (c_stamp[i-1]-p_stamp[i-1]));
     // }
-    }while (i<QUEUE_SIZE);
+    } while (i<QUEUE_SIZE  && !kthread_should_stop());
     // spin_unlock_irqrestore(&interruptLock2, flags);
 
     for (i =0;i< QUEUE_SIZE;i++) {
@@ -104,23 +104,23 @@ int kthread_init(void){
 
     printk(KERN_INFO "DEBUG: consumer Master thread cpu %d\n", cpuid);
 
-    kthread2 = kthread_create(consumer, (void *)&squeue, "two"); 
-    if (IS_ERR(kthread2))
+    kconsumer = kthread_create(consumer, (void *)&squeue, "two"); 
+    if (IS_ERR(kconsumer))
     {
         printk(KERN_INFO "ERROR: Cannot create consumer thread\n");
-        err = PTR_ERR(kthread2);
-        kthread2= NULL;
+        err = PTR_ERR(kconsumer);
+        kconsumer= NULL;
         return err;
     }
-    kthread_bind(kthread2, 38);
-    wake_up_process(kthread2);
+    kthread_bind(kconsumer, 38);
+    wake_up_process(kconsumer);
  
 
     return 0;
 }
 
 void kthread_exit(void){
-    kthread_stop(kthread2);
+    kthread_stop(kconsumer);
     printk(KERN_EMERG "DEBUG: consumer Module unload successful\n");
 }
 
