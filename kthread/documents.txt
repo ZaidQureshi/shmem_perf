@@ -37,3 +37,6 @@
 2. https://www.cl.cam.ac.uk/~pes20/weakmemory/index.html
 3. http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0124r4.html
 4. https://elinux.org/images/a/ab/Bueso.pdf
+
+#Others
+1. http://books.gigatux.nl/mirror/kerneldevelopment/0672327201/ch11lev1sec4.html
