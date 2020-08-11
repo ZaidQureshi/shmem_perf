@@ -30,3 +30,9 @@
 #RCU what is RCU:
 1. https://www.kernel.org/doc/Documentation/RCU/whatisRCU.txt
 2. https://www.kernel.org/doc/Documentation/RCU/
+
+
+#Consistency and kthreads
+1. http://infolab.stanford.edu/pub/cstr/reports/csl/tr/95/685/CSL-TR-95-685.pdf
+2. https://www.cl.cam.ac.uk/~pes20/weakmemory/index.html
+3. http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0124r4.html
